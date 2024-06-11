@@ -126,5 +126,8 @@ public class DAO_SanPham {
     
         return listSP;
    }
-    
+   public int InsertSanPham(String masp,String tensp, String math, String madm, String thongso, int  gianiemyet,int giaban){
+       String sql = "";
+    try {
+            ResultSet rs = DataProvider.executeUpdate(sql);
 }
