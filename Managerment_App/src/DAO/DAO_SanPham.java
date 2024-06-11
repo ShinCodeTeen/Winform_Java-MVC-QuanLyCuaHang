@@ -126,8 +126,43 @@ public class DAO_SanPham {
     
         return listSP;
    }
-   public int InsertSanPham(String masp,String tensp, String math, String madm, String thongso, int  gianiemyet,int giaban){
-       String sql = "";
+   public boolean InsertSanPham(String masp,String tensp, String math, String madm, String thongso, int  gianiemyet,int giaban){
+       String sql = "INSERT INTO dbo.SanPham(masp,tensp,thongso,gianiemyet,giaban,math,madm,makm)VALUES('"+masp+"','"+tensp+"','"+thongso+"',"+gianiemyet+","+giaban+",'"+math+"','"+madm+"',NULL)";
     try {
-            ResultSet rs = DataProvider.executeUpdate(sql);
+        int rs = DataProvider.executeUpdate(sql);
+        if(rs>0){
+        return true;
+        }
+        else{
+        return false;
+        }
+    
+            
+    }catch(Exception e){
+        
+      e.printStackTrace();
+      return false;
+    }
+   }
+   
+   public boolean UpdateSanPham(String tensp, String math, String madm, String thongso, int  gianiemyet,int giaban){
+       String sql ="UPDATE dbo.SanPham SET tensp = '"+tensp+"' , thongso = N'"+thongso+"', gianiemyet ="+gianiemyet+" , giaban ="+giaban+" , math = '"+math+"', madm= '"+madm+"'";
+     try {
+        int rs = DataProvider.executeUpdate(sql);
+        if(rs>0){
+        return true;
+        }
+        else{
+        return false;
+        }
+    
+            
+    }catch(Exception e){
+        
+      e.printStackTrace();
+      return false;
+    }  
+   
+   }
+       
 }
