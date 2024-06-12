@@ -1894,21 +1894,41 @@ private void onPanel(String panel){
              }
             }
             else{
-                
-                    bt_Them_SP.setText("Mới");
-                    int row = tb_SanPham.getSelectedRow();
-                    String ten =tb_SanPham.getValueAt(row, 0).toString();
-                    SanPham sp = new DAO.DAO_SanPham().getsp(ten);
-                    txb_QLSP_masp.setText(sp.masp);
-                    txb_QLSP_tensp.setText(sp.tensp);
-                    cbb_QLSP_dm.setSelectedItem(tb_SanPham.getValueAt(row, 3));
-                    cbb_QLSP_th.setSelectedItem(tb_SanPham.getValueAt(row, 4));
-                    txb_QLSP_thongso.setText(sp.thongso);
-                    txb_QLSP_gianiemyet.setText(tb_SanPham.getValueAt(row, 2).toString());
-                    txb_QLSP_giaban.setText(tb_SanPham.getValueAt(row, 3).toString());
+                if(tt_Sua_SP==false){
                     QLSP_on_txb();
                     tt_Sua_SP=true;
                     bt_Sua_SP.setText("Xác nhận");
+                }
+                else{
+                    if(txb_QLSP_giaban.getText().isEmpty() && txb_QLSP_gianiemyet.getText().isEmpty() && txb_QLSP_masp.getText().isEmpty() && txb_QLSP_tensp.getText().isEmpty() && txb_QLSP_thongso.getText().isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                        
+                    }
+                    else{
+                         String masp = txb_QLSP_masp.getText();
+                    String tensp = txb_QLSP_tensp.getText();
+                    String thongso = txb_QLSP_thongso.getText();
+                    int gianiemyet =Integer.parseInt( txb_QLSP_gianiemyet.getText());
+                int giaban = Integer.parseInt(txb_QLSP_giaban.getText());
+                    String madm = new DAO.DAO_DM_SanPham().getMadm(cbb_QLSP_dm.getSelectedItem().toString());
+                String math = new DAO.DAO_DM_ThuongHieu().getMath(cbb_QLSP_th.getSelectedItem().toString());
+                boolean re_them = new DAO.DAO_SanPham().InsertSanPham(masp,tensp, math, madm, thongso, gianiemyet, giaban);
+                if(re_them){
+                   int option = JOptionPane.showOptionDialog(null, "Thêm sản phẩm thành công !! Tiếp tục thêm ?", "Thông báo", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                   if(option==JOptionPane.OK_OPTION){
+                    clear_txb_QLSP();
+                   }
+                   else{
+                   clear_txb_QLSP();
+                   tt_them_SP = false;
+                   QLSP_off_txb();
+                   bt_Them_SP.setText("Mới");
+                   }
+                }
+                    }
+           
+                }
             }
          }
     }//GEN-LAST:event_bt_Sua_SPMouseClicked
