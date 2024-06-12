@@ -14,14 +14,12 @@ public class SanPham {
     public String thongso;
     public int gianiemyet;
     public int giaban;
-
-
     public String math;
     public String madm;
     public String makm;
-    public String anh;
+ 
 
-    public SanPham(String masp, String tensp, String thongso, int gianiemyet,int giaban, String math, String madm, String makm, String anh) {
+    public SanPham(String masp, String tensp, String thongso, int gianiemyet,int giaban, String math, String madm, String makm) {
         this.masp = masp;
         this.tensp = tensp;
         this.thongso = thongso;
@@ -30,7 +28,7 @@ public class SanPham {
         this.math = math;
         this.madm = madm;
         this.makm = makm;
-        this.anh = anh;
+  
     }
 
     public String getMasp() {
@@ -89,14 +87,7 @@ public class SanPham {
         this.makm = makm;
     }
 
-    public String getAnh() {
-        return anh;
-    }
-
-    public void setAnh(String anh) {
-        this.anh = anh;
-    }
-    
+ 
     public int getGiaban() {
         return giaban;
     }

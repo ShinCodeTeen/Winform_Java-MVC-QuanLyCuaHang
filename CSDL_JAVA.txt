@@ -1,0 +1,387 @@
+CREATE TABLE Account(
+manv varchar (20) PRIMARY KEY ,
+username VARCHAR(30) not null,
+password VARCHAR(30) NOT NULL,
+ten nvarchar(100) not null,
+chucvu nvarchar(50) not null,
+type int not null,
+)
+go
+Insert into Account(manv,username,password,ten,chucvu,type) value
+('Admin','admin','admin',N'Nguyen Văn A','admin',1 ) 
+
+go
+CREATE TABLE DM_SanPham(
+madm VARCHAR(10) PRIMARY KEY,
+tendm NVARCHAR(30) NOT NULL
+)
+INSERT INTO dbo.DM_SanPham
+(
+    madm,
+    tendm
+)
+VALUES
+('DT', N'Điện thoại'),
+('MT', N'Máy Tính'),
+('PK', N'Phụ Kiện')
+CREATE TABLE DM_ThuongHieu(
+math varchar(10) PRIMARY KEY,
+tenth nvarchar(20),
+madm VARCHAR(10) FOREIGN KEY REFERENCES dbo.DM_SanPham(madm)
+)
+
+INSERT INTO dbo.DM_ThuongHieu
+(
+    math,
+    tenth,
+    madm
+)
+VALUES
+('SS', 'Samsung', 'DT'),
+('AP', 'Apple', 'DT'),
+('XM', 'Xiaomi', 'DT'),
+('OP', 'OPPO', 'DT'),
+('DL', 'Dell', 'MT'),
+('HP', 'HP', 'MT'),
+('AC', 'Acer', 'MT'),
+('LE', 'Lenovo', 'MT'),
+('LG', 'Logitech', 'PK'),
+('AN', 'Anker', 'PK')
+
+CREATE TABLE SanPham(
+masp VARCHAR(10) PRIMARY KEY,
+tensp VARCHAR(100) ,
+thongso NVARCHAR(100),
+gianiemyet INT ,
+giaban INT,
+math VARCHAR(10) FOREIGN KEY REFERENCES dbo.DM_ThuongHieu(math),
+madm VARCHAR(10) FOREIGN KEY REFERENCES dbo.DM_SanPham(madm),
+makm VARCHAR(10) ,
+anh VARCHAR(50)
+)
+
+
+
+INSERT INTO dbo.SanPham
+(
+    masp,
+    tensp,
+    thongso,
+    gianiemyet,
+    giaban,
+    math,
+    madm,
+    makm,
+    anh
+)
+VALUES
+('SS1', 'Samsung Galaxy S23 Ultra', N'Snapdragon 8 Gen 2, 8GB RAM, 512GB ROM, màn hình 6,8 inch Dynamic AMOLED 2X, camera chính 200MP', 19990000, 29990000, 'SS', 'DT', NULL, 'SS1.png'),
+('SS2', 'Samsung Galaxy S23+', N'Snapdragon 8 Gen 2, 8GB RAM, 256GB ROM, màn hình 6,6 inch Dynamic AMOLED 2X, camera chính 50MP', 16990000, 24990000, 'SS', 'DT', NULL, 'SS2.png'),
+('SS3', 'Samsung Galaxy S23', N'Snapdragon 8 Gen 2, 8GB RAM, 128GB ROM, màn hình 6,1 inch Dynamic AMOLED 2X, camera chính 50MP', 14990000, 21990000, 'SS', 'DT', NULL, 'SS3.png'),
+('SS4', 'Samsung Galaxy A54 5G', N'Exynos 1280, 6GB RAM, 128GB ROM, màn hình 6,4 inch Super AMOLED, camera chính 50MP', 9990000, 14990000, 'SS', 'DT', NULL, 'SS4.png'),
+('SS5', 'Samsung Galaxy A34 5G', N'Exynos 1280, 4GB RAM, 128GB ROM, màn hình 6,4 inch Super AMOLED, camera chính 48MP', 7990000, 11990000, 'SS', 'DT', NULL, 'SS5.png'),
+('SS6', 'Samsung Galaxy M53 5G', N'MediaTek Dimensity 900, 8GB RAM, 128GB ROM, màn hình 6,7 inch Super AMOLED Plus, camera chính 108MP', 6990000, 9990000, 'SS', 'DT', NULL, 'SS6.png'),
+('SS7', 'Samsung Galaxy M33 5G', N'Exynos 1280, 6GB RAM, 128GB ROM, màn hình 6,6 inch Super AMOLED, camera chính 50MP', 5990000, 8990000, 'SS', 'DT', NULL, 'SS7.png'),
+('SS8', 'Samsung Galaxy A14 5G', N'MediaTek Helio G80, 4GB RAM, 64GB ROM, màn hình 6,6 inch PLS LCD, camera chính 50MP', 4990000, 7990000, 'SS', 'DT', NULL, 'SS8.png'),
+('SS9', 'Samsung Galaxy A04s', N'Exynos 850, 3GB RAM, 32GB ROM, màn hình 6,5 inch PLS LCD, camera chính 13MP', 3990000, 5990000, 'SS', 'DT', NULL, 'SS9.png'),
+('SS10', 'Samsung Galaxy A03s', N'Unisoc SC9863A, 3GB RAM, 32GB ROM, màn hình 6,5 inch PLS LCD, camera chính 13MP', 2990000, 4990000, 'SS', 'DT', NULL, 'SS10.png'),
+--Iphone--
+
+('IP1', 'iPhone 14 Pro Max', N'Chip A16 Bionic, 6GB RAM, 1TB ROM, màn hình 6,7 inch Super Retina XDR, camera chính 48MP', 32990000, 44990000, 'AP', 'DT', NULL, 'IP1.png'),
+('IP2', 'iPhone 14 Pro', N'Chip A16 Bionic, 6GB RAM, 512GB ROM, màn hình 6,1 inch Super Retina XDR, camera chính 48MP', 28990000, 38990000, 'AP', 'DT', NULL, 'IP2.png'),
+('IP3', 'iPhone 14', N'Chip A15 Bionic, 6GB RAM, 256GB ROM, màn hình 6,1 inch Super Retina XDR, camera chính 12MP', 24990000, 32990000, 'AP', 'DT', NULL, 'IP3.png'),
+('IP4', 'iPhone 13 Pro Max', N'Chip A15 Bionic, 6GB RAM, 1TB ROM, màn hình 6,7 inch Super Retina XDR, camera chính 12MP', 26990000, 34990000, 'AP', 'DT', NULL, 'IP4.png'),
+('IP5', 'iPhone 13 Pro', N'Chip A15 Bionic, 6GB RAM, 512GB ROM, màn hình 6,1 inch Super Retina XDR, camera chính 12MP', 22990000, 29990000, 'AP', 'DT', NULL, 'IP5.png'),
+('IP6', 'iPhone 13', N'Chip A15 Bionic, 4GB RAM, 256GB ROM, màn hình 6,1 inch Super Retina XDR, camera chính 12MP', 18990000, 24990000, 'AP', 'DT', NULL, 'IP6.png'),
+('IP7', 'iPhone 12 Pro Max', N'Chip A14 Bionic, 6GB RAM, 512GB ROM, màn hình 6,7 inch Super Retina XDR, camera chính 12MP', 20990000, 26990000, 'AP', 'DT', NULL, 'IP7.png'),
+('IP8', 'iPhone 12 Pro', N'Chip A14 Bionic, 6GB RAM, 256GB ROM, màn hình 6,1 inch Super Retina XDR, camera chính 12MP', 16990000, 21990000, 'AP', 'DT', NULL, 'IP8.png'),
+('IP9', 'iPhone 12', N'Chip A14 Bionic, 4GB RAM, 128GB ROM, màn hình 6,1 inch Super Retina XDR, camera chính 12MP', 14990000, 19990000, 'AP', 'DT', NULL, 'IP9.png'),
+('IP10', 'iPhone 11', N'Chip A13 Bionic, 4GB RAM, 256GB ROM, màn hình 6,1 inch Liquid Retina HD, camera chính 12MP', 12990000, 16990000, 'AP', 'DT', NULL, 'IP10.png'),
+
+--	Xiaomi--
+( 'XM1', 'Xiaomi 13 Pro', N'Snapdragon 8 Gen 2, 8GB RAM, 256GB ROM, màn hình 6,73 inch AMOLED, camera chính 50MP', 24990000, 32990000, 'XM', 'DT', NULL, 'XM1.png'),
+( 'XM2', 'Xiaomi 13', N'Snapdragon 8 Gen 2, 8GB RAM, 128GB ROM, màn hình 6,36 inch AMOLED, camera chính 50MP', 19990000, 27990000, 'XM', 'DT', NULL, 'XM2.png'),
+( 'XM3', 'Xiaomi 12T Pro', N'Snapdragon 8+ Gen 1, 8GB RAM, 256GB ROM, màn hình 6,67 inch AMOLED, camera chính 200MP', 16990000, 22990000, 'XM', 'DT', NULL, 'XM3.png'),
+( 'XM4', 'Xiaomi 12T', N'MediaTek Dimensity 8100-Ultra, 8GB RAM, 128GB ROM, màn hình 6,67 inch AMOLED, camera chính 108MP', 12990000, 17990000, 'XM', 'DT', NULL, 'XM4.png'),
+( 'XM5', 'Xiaomi 11T Pro', N'Snapdragon 888, 8GB RAM, 256GB ROM, màn hình 6,67 inch AMOLED, camera chính 108MP', 10990000, 14990000, 'XM', 'DT', NULL, 'XM5.png'),
+( 'XM6', 'Xiaomi 11T', N'MediaTek Dimensity 1200, 8GB RAM, 128GB ROM, màn hình 6,67 inch AMOLED, camera chính 108MP', 8990000, 12990000, 'XM', 'DT', NULL, 'XM6.png'),
+( 'XM7', 'Xiaomi Redmi Note 12 Pro+', N'MediaTek Dimensity 1080, 8GB RAM, 256GB ROM, màn hình 6,67 inch AMOLED, camera chính 200MP', 7990000, 10990000, 'XM', 'DT', NULL, 'XM7.png'),
+( 'XM8', 'Xiaomi Redmi Note 12 Pro', N'Snapdragon 778G, 8GB RAM, 128GB ROM, màn hình 6,67 inch AMOLED, camera chính 108MP', 6990000, 8990000, 'XM', 'DT', NULL, 'XM8.png'),
+( 'XM9', 'Xiaomi Redmi Note 11 Pro+', N'MediaTek Helio G96, 8GB RAM, 128GB ROM, màn hình 6,67 inch AMOLED, camera chính 108MP', 5990000, 7990000, 'XM', 'DT', NULL, 'XM9.png'),
+( 'XM10', 'Xiaomi Redmi Note 11 Pro', N'Snapdragon 695, 8GB RAM, 128GB ROM, màn hình 6,67 inch AMOLED, camera chính 108MP', 4990000, 6990000, 'XM', 'DT', NULL, 'XM10.png'),
+--Oppo--
+( 'OP1', 'OPPO Find X6 Pro', N'Snapdragon 8 Gen 2, 12GB RAM, 512GB ROM, màn hình 6,7 inch AMOLED, camera chính 50MP', 27990000, 37990000, 'OP', 'DT', NULL, 'OP1.png'),
+( 'OP2', 'OPPO Find X6', N'Snapdragon 8 Gen 2, 8GB RAM, 256GB ROM, màn hình 6,55 inch AMOLED, camera chính 50MP', 22990000, 30990000, 'OP', 'DT', NULL, 'OP2.png'),
+( 'OP3', 'OPPO Reno9 Pro+', N'Snapdragon 8+ Gen 1, 16GB RAM, 512GB ROM, màn hình 6,7 inch AMOLED, camera chính 50MP', 19990000, 26990000, 'OP', 'DT', NULL, 'OP3.png'),
+( 'OP4', 'OPPO Reno9 Pro', N'Snapdragon 778G, 8GB RAM, 256GB ROM, màn hình 6,62 inch AMOLED, camera chính 50MP', 15990000, 21990000, 'OP', 'DT', NULL, 'OP4.png'),
+( 'OP5', 'OPPO Reno8 Pro', N'Snapdragon 7 Gen 1, 8GB RAM, 256GB ROM, màn hình 6,43 inch AMOLED, camera chính 50MP', 12990000, 17990000, 'OP', 'DT', NULL, 'OP5.png'),
+( 'OP6', 'OPPO Reno8', N'Snapdragon 680, 8GB RAM, 128GB ROM, màn hình 6,43 inch AMOLED, camera chính 64MP', 9990000, 13990000, 'OP', 'DT', NULL, 'OP6.png'),
+( 'OP7', 'OPPO A98', N'MediaTek Helio G88, 8GB RAM, 128GB ROM, màn hình 6,7 inch LCD, camera chính 108MP', 7990000, 10990000, 'OP', 'DT', NULL, 'OP7.png'),
+( 'OP8', 'OPPO A78 5G', N'MediaTek Dimensity 700, 8GB RAM, 128GB ROM, màn hình 6,56 inch LCD, camera chính 50MP', 5990000, 8990000, 'OP', 'DT', NULL, 'OP8.png'),
+( 'OP9', 'OPPO A58', N'MediaTek Helio G35, 6GB RAM, 128GB ROM, màn hình 6,56 inch LCD, camera chính 50MP', 4990000, 6990000, 'OP', 'DT', NULL, 'OP9.png'),
+( 'OP10', 'OPPO A17', N'MediaTek Helio G35, 4GB RAM, 64GB ROM, màn hình 6,56 inch LCD, camera chính 50MP', 3990000, 5990000, 'OP', 'DT', NULL, 'OP10.png'),
+--Dell--
+( 'DL1', 'Dell XPS 13 9320', N'Intel Core i7-1165G7, 16GB RAM, 512GB SSD, màn hình 13,4 inch FHD+', 34990000, 44990000, 'DL', 'MT', NULL, 'DL1.png'),
+( 'DL2', 'Dell XPS 15 9520', N'Intel Core i7-11800H, 16GB RAM, 512GB SSD, màn hình 15,6 inch UHD+', 44990000, 59990000, 'DL', 'MT', NULL, 'DL2.png'),
+( 'DL3', 'Dell Inspiron 14 5420', N'Intel Core i5-1135G7, 8GB RAM, 256GB SSD, màn hình 14 inch FHD', 24990000, 32990000, 'DL', 'MT', NULL, 'DL3.png'),
+( 'DL4', 'Dell Inspiron 15 3520', N'Intel Core i3-1115G4, 4GB RAM, 128GB SSD, màn hình 15,6 inch HD', 17990000, 23990000, 'DL', 'MT', NULL, 'DL4.png'),
+( 'DL5', 'Dell Vostro 15 5520', N'Intel Core i5-1135G7, 8GB RAM, 256GB SSD, màn hình 15,6 inch FHD', 22990000, 29990000, 'DL', 'MT', NULL, 'DL5.png'),
+( 'DL6', 'Dell Vostro 14 5420', N'Intel Core i3-1115G4, 4GB RAM, 128GB SSD, màn hình 14 inch FHD', 16990000, 21990000, 'DL', 'MT', NULL, 'DL6.png'),
+( 'DL7', 'Dell Latitude 14 5430', N'Intel Core i5-1135G7, 8GB RAM, 256GB SSD, màn hình 14 inch FHD', 27990000, 36990000, 'DL', 'MT', NULL, 'DL7.png'),
+( 'DL8', 'Dell Latitude 15 5530', N'Intel Core i7-1185G7, 16GB RAM, 512GB SSD, màn hình 15,6 inch FHD+', 39990000, 52990000, 'DL', 'MT', NULL, 'DL8.png'),
+( 'DL9', 'Dell Precision 3560', N'Intel Xeon W-11955M, 32GB RAM, 1TB SSD, màn hình 15,6 inch FHD+', 54990000, 72990000, 'DL', 'MT', NULL, 'DL9.png'),
+( 'DL10', 'Dell Precision 5560', N'Intel Xeon W-11955M, 64GB RAM, 2TB SSD, màn hình 15,6 inch UHD+', 79990000, 104990000, 'DL', 'MT', NULL, 'DL10.png'),
+--Acer--
+( 'AC1', 'Acer Swift 5 SF514-56T', N'Intel Core i7-1260P, 16GB RAM, 512GB SSD, màn hình 14 inch WQXGA', 29990000, 39990000, 'AC', 'MT', NULL, 'AC1.png'),
+('AC2', 'Acer Swift 3 SF314-512', N'Intel Core i5-1235U, 8GB RAM, 512GB SSD, màn hình 14 inch FHD',27999000,35990000,'AC','MT',NULL,'AC2.png'),
+( 'AC3', 'Acer Aspire 5 A515-57', N'Intel Core i5-1235U, 8GB RAM, 512GB SSD, màn hình 15,6 inch FHD', 19990000, 26990000, 'AC', 'MT', NULL, 'AC3.png'),
+( 'AC4', 'Acer Aspire 3 A315-58', N'Intel Core i3-1215U, 4GB RAM, 256GB SSD, màn hình 15,6 inch HD', 14990000, 19990000, 'AC', 'MT', NULL, 'AC4.png'),
+( 'AC5', 'Acer Nitro 5 AN515-58', N'Intel Core i5-12500H, 8GB RAM, 512GB SSD, màn hình 15,6 inch FHD 144Hz', 24990000, 32990000, 'AC', 'MT', NULL, 'AC5.png'),
+( 'AC6', 'Acer Nitro 5 AN517-54', N'Intel Core i7-12700H, 16GB RAM, 1TB SSD, màn hình 17,3 inch FHD 144Hz', 34990000, 44990000, 'AC', 'MT', NULL, 'AC6.png'),
+( 'AC7', 'Acer Predator Helios 300', N'Intel Core i7-12700H, 16GB RAM, 512GB SSD, màn hình 15,6 inch QHD 165Hz', 39990000, 52990000, 'AC', 'MT', NULL, 'AC7.png'),
+('AC8', 'Acer Predator Triton 500 ', N'Intel Core i9-12900H, 32GB RAM, 1TB SSD, màn hình 16 inch WQXGA 240Hz', 64990000, 84990000, 'AC', 'MT', NULL, 'AC8.png'),
+( 'AC9', 'Acer ConceptD 3 Ezel CC314-72G', N'Intel Core i7-12700H, 16GB RAM, 512GB SSD, màn hình 14 inch UHD cảm ứng xoay 360 độ', 59990000, 79990000, 'AC', 'MT', NULL, 'AC9.png'),
+( 'AC10', 'Acer Chromebook Spin ', N'Intel Celeron N5100, 4GB RAM, 64GB eMMC, màn hình 13,3 inch FHD cảm ứng xoay 360 độ', 9990000, 13990000, 'AC', 'MT', NULL, 'AC10.png'),
+--Lenovo--
+( 'LE1', 'Lenovo ThinkPad X1 Carbon Gen 10', N'Intel Core i7-1280P, 16GB RAM, 512GB SSD, màn hình 14 inch WQXGA', 44990000, 59990000, 'LE', 'MT', NULL, 'LE1.png'),
+( 'LE2', 'Lenovo ThinkPad X1 Yoga Gen 7', N'Intel Core i7-1260P, 16GB RAM, 512GB SSD, màn hình 14 inch OLED cảm ứng xoay 360 độ', 49990000, 64990000, 'LE', 'MT', NULL, 'LE2.png'),
+( 'LE3', 'Lenovo ThinkBook 14s Yoga Gen 2', N'Intel Core i5-1240P, 8GB RAM, 512GB SSD, màn hình 14 inch WQXGA cảm ứng xoay 360 độ', 29990000, 39990000, 'LE', 'MT', NULL, 'LE3.png'),
+( 'LE4', 'Lenovo ThinkBook 15 Gen 4', N'Intel Core i5-1235U, 8GB RAM, 512GB SSD, màn hình 15,6 inch FHD', 24990000, 32990000, 'LE', 'MT', NULL, 'LE4.png'),
+( 'LE5', 'Lenovo IdeaPad Slim 5 Pro', N'Intel Core i5-12500H, 8GB RAM, 512GB SSD, màn hình 16 inch WQXGA', 27990000, 36990000, 'LE', 'MT', NULL, 'LE5.png'),
+( 'LE6', 'Lenovo IdeaPad Gaming 3', N'Intel Core i5-12500H, 8GB RAM, 512GB SSD, màn hình 15,6 inch FHD 120Hz', 24990000, 32990000, 'LE', 'MT', NULL, 'LE6.png'),
+( 'LE7', 'Lenovo Legion 5 Pro', N'Intel Core i7-12700H, 16GB RAM, 1TB SSD, màn hình 16 inch WQXGA 165Hz', 39990000, 52990000, 'LE', 'MT', NULL, 'LE7.png'),
+( 'LE8', 'Lenovo Legion 7', N'Intel Core i9-12900HX, 32GB RAM, 1TB SSD, màn hình 16 inch WQXGA 240Hz', 64990000, 84990000, 'LE', 'MT', NULL, 'LE8.png'),
+( 'LE9', 'Lenovo Yoga 9i', N'Intel Core i7-1260P, 16GB RAM, 512GB SSD, màn hình 14 inch OLED cảm ứng xoay 360 độ', 49990000, 64990000, 'LE', 'MT', NULL, 'LE9.png'),
+( 'LE10', 'Lenovo Chromebook Duet 3', N'Qualcomm Snapdragon 7c Gen 2, 4GB RAM, 128GB eMMC, màn hình 11 inch FHD cảm ứng xoay 360 độ', 9990000, 13990000, 'LE', 'MT', NULL, 'LE10.png'),
+--Anker--
+( 'AN1', 'Anker PowerCore 26800mAh', N'Pin dự phòng 26800mAh, hỗ trợ sạc nhanh PowerIQ 3.0', 799000, 1099000, 'AN', 'PK', NULL, 'AN1.png'),
+( 'AN2', 'Anker PowerCore 20100mAh', N'Pin dự phòng 20100mAh, hỗ trợ sạc nhanh PowerIQ 2.0', 599000, 899000, 'AN', 'PK', NULL, 'AN2.png'),
+( 'AN3', 'Anker PowerCore 13400mAh', N'Pin dự phòng 13400mAh, hỗ trợ sạc nhanh PowerIQ', 499000, 699000, 'AN', 'PK', NULL, 'AN3.png'),
+( 'AN4', 'Anker PowerCore 10000mAh', N'Pin dự phòng 10000mAh, hỗ trợ sạc nhanh PowerIQ', 399000, 599000, 'AN', 'PK', NULL, 'AN4.png'),
+( 'AN5', 'Anker PowerCore 5000mAh', N'Pin dự phòng 5000mAh, hỗ trợ sạc nhanh PowerIQ', 299000, 499000, 'AN', 'PK', NULL, 'AN5.png'),
+( 'AN6', 'Anker PowerPort III Nano 20W', N'Củ sạc nhanh 20W, hỗ trợ Power Delivery 3.0', 299000, 499000, 'AN', 'PK', NULL, 'AN6.png'),
+( 'AN7', 'Anker PowerPort III Duo 65W', N'Củ sạc nhanh 65W, 2 cổng USB-C hỗ trợ Power Delivery 3.0', 599000, 899000, 'AN', 'PK', NULL, 'AN7.png'),
+( 'AN8', 'Anker PowerPort Atom III Slim 65W', N'Củ sạc nhanh 65W, nhỏ gọn và nhẹ', 499000, 699000, 'AN', 'PK', NULL, 'AN8.png'),
+( 'AN9', 'Anker PowerPort Atom PD 2', N'Củ sạc nhanh 30W, hỗ trợ Power Delivery 2.0', 399000, 599000, 'AN', 'PK', NULL, 'AN9.png'),
+( 'AN10', 'Anker PowerPort Atom PD 1', N'Củ sạc nhanh 18W, hỗ trợ Power Delivery 2.0', 299000, 499000, 'AN', 'PK', NULL, 'AN10.png'),
+--Logitech--
+( 'LG1', 'Logitech MX Master 3', N'Chuột không dây cao cấp, cảm biến Darkfield, 7 nút tùy chỉnh', 1499000, 1999000, 'LG', 'PK', NULL, 'LG1.png'),
+( 'LG2', 'Logitech MX Anywhere 3', N'Chuột không dây di động, cảm biến Darkfield, 6 nút tùy chỉnh', 1299000, 1799000, 'LG', 'PK', NULL, 'LG2.png'),
+( 'LG3', 'Logitech G502 Hero', N'Chuột chơi game có dây, cảm biến Hero 25K, 11 nút tùy chỉnh', 1199000, 1599000, 'LG', 'PK', NULL, 'LG3.png'),
+( 'LG4', 'Logitech G203 Lightsync', N'Chuột chơi game có dây, cảm biến Hero 8K, 6 nút tùy chỉnh', 799000, 1099000, 'LG', 'PK', NULL, 'LG4.png'),
+( 'LG5', 'Logitech K380', N'Bàn phím không dây đa thiết bị, kết nối Bluetooth hoặc USB', 799000, 1099000, 'LG', 'PK', NULL, 'LG5.png'),
+( 'LG6', 'Logitech MX Keys', N'Bàn phím không dây cao cấp, cảm biến phím Perfect Stroke, đèn nền thông minh', 1999000, 2699000, 'LG', 'PK', NULL, 'LG6.png'),
+( 'LG7', 'Logitech G915 TKL', N'Bàn phím chơi game không dây, switch cơ học GL, đèn nền RGB', 2499000, 3299000, 'LG', 'PK', NULL, 'LG7.png'),
+( 'LG8', 'Logitech G413 Carbon', N'Bàn phím chơi game có dây, switch cơ học Romer-G, đèn nền RGB', 1499000, 1999000, 'LG', 'PK', NULL, 'LG8.png'),
+( 'LG9', 'Logitech C920s Pro', N'Webcam Full HD, tự động lấy nét, micro kép', 1299000, 1799000, 'LG', 'PK', NULL, 'LG9.png'),
+('LG10', 'Logitech C270', N'Webcam HD, micro tích hợp', 599000, 899000, 'LG', 'PK', NULL, 'LG10.png')
+GO
+
+
+
+
+
+
+--- Bảng Khách Hàng----
+CREATE TABLE KhachHang(
+makh VARCHAR(20) PRIMARY KEY,
+tenkh NVARCHAR(100) NOT NULL,
+sdt VARCHAR(20) NOT NULL,
+diachi NVARCHAR(100),
+loai INT NOT NULL DEFAULT 0
+)
+
+INSERT INTO KhachHang (makh, tenkh, sdt, diachi, loai)
+VALUES
+    ('KH001', 'Nguyễn Văn A', '0901234567', 'Tam Đảo, Vĩnh Phúc', 0),
+    ('KH002', 'Trần Thị B', '0912345678', 'Phúc Yên, Vĩnh Phúc', 1),
+    ('KH003', 'Lê Văn C', '0923456789', 'Vĩnh Tường, Vĩnh Phúc', 0),
+    ('KH004', 'Phạm Thị D', '0934567890', 'Yên Lạc, Vĩnh Phúc', 1),
+    ('KH005', 'Hoàng Văn E', '0945678901', 'Vĩnh Yên, Vĩnh Phúc', 0),
+    ('KH006', 'Nguyễn Thị F', '0956789012', 'Tam Dương, Vĩnh Phúc', 1),
+    ('KH007', 'Trần Văn G', '0967890123', 'Sông Lô, Vĩnh Phúc', 0),
+    ('KH008', 'Lê Thị H', '0978901234', 'Bình Xuyên, Vĩnh Phúc', 1),
+    ('KH009', 'Phạm Văn I', '0989012345', 'Vĩnh Tường, Vĩnh Phúc', 0),
+    ('KH010', 'Hoàng Thị J', '0990123456', 'Tam Đảo, Vĩnh Phúc', 1),
+    ('KH011', 'Nguyễn Văn K', '0901234567', 'Phúc Yên, Vĩnh Phúc', 0),
+    ('KH012', 'Trần Thị L', '0912345678', 'Vĩnh Tường, Vĩnh Phúc', 1),
+    ('KH013', 'Lê Văn M', '0923456789', 'Yên Lạc, Vĩnh Phúc', 0),
+    ('KH014', 'Phạm Thị N', '0934567890', 'Vĩnh Yên, Vĩnh Phúc', 1),
+    ('KH015', 'Hoàng Văn O', '0945678901', 'Tam Dương, Vĩnh Phúc', 0),
+    ('KH016', 'Nguyễn Thị P', '0956789012', 'Sông Lô, Vĩnh Phúc', 1),
+    ('KH017', 'Trần Văn Q', '0967890123', 'Bình Xuyên, Vĩnh Phúc', 0),
+    ('KH018', 'Lê Thị R', '0978901234', 'Vĩnh Tường, Vĩnh Phúc', 1),
+    ('KH019', 'Phạm Văn S', '0989012345', 'Tam Đảo, Vĩnh Phúc', 0),
+    ('KH020', 'Hoàng Thị T', '0990123456', 'Phúc Yên, Vĩnh Phúc', 1),
+    ('KH021', 'Nguyễn Văn U', '0901234567', 'Vĩnh Tường, Vĩnh Phúc', 0),
+    ('KH022', 'Trần Thị V', '0912345678', 'Yên Lạc, Vĩnh Phúc', 1),
+    ('KH023', 'Lê Văn X', '0923456789', 'Vĩnh Yên, Vĩnh Phúc', 0),
+    ('KH024', 'Phạm Thị Y', '0934567890', 'Tam Dương, Vĩnh Phúc', 1),
+    ('KH025', 'Hoàng Văn Z', '0945678901', 'Sông Lô, Vĩnh Phúc', 0)
+----Bảng Chức Vụ---
+CREATE TABLE ChucVu(
+machucvu VARCHAR(20) PRIMARY KEY NOT NULL,
+tencv NVARCHAR(50) NOT NULL
+)
+INSERT INTO dbo.ChucVu (machucvu, tencv)
+VALUES
+('QL', N'Quản lý'),
+('BH', N'Bán hàng'),
+('KT', N'Kỹ thuật viên'),
+('CSKH', N'Chăm sóc khách hàng')
+--Bảng Nhân Viên--
+CREATE TABLE NhanVien(
+manv VARCHAR(20) PRIMARY KEY NOT NULL,
+tennv NVARCHAR(100) NOT NULL,
+chucvu NVARCHAR(50) NOT NULL,
+ngayvaolam DATE
+)
+
+INSERT INTO dbo.NhanVien
+(manv, tennv, chucvu, ngayvaolam)
+VALUES
+('NV001', N'Nguyễn Văn Anh', N'Quản lý', '2023-10-26'),
+('NV002', N'Trần Thị Bình', N'Bán hàng', '2023-10-27'),
+('NV003', N'Lê Thị Lan', N'Bán hàng', '2023-10-28'),
+('NV004', N'Phạm Thị Dung', N'Bán hàng', '2023-10-29'),
+('NV005', N'Hoàng Văn Tiến', N'Bán hàng', '2023-10-30'),
+('NV006', N'Nguyễn Văn Hưng', N'Kỹ thuật viên', '2023-10-31'),
+('NV007', N'Trần Văn Giang', N'Kỹ thuật viên', '2023-11-01'),
+('NV008', N'Lê Thị Hương', N'Chăm sóc khách hàng', '2023-11-02');
+--Bảng Hóa Đơn--
+
+CREATE TABLE HoaDon(
+mahd VARCHAR(20) PRIMARY KEY NOT NULL,
+makh VARCHAR(20)FOREIGN KEY REFERENCES dbo.KhachHang(makh),
+manv VARCHAR(20) ,
+thoigian DATE NOT NULL,
+trangthai INT 
+)
+
+
+INSERT INTO HoaDon (mahd, makh, manv, thoigian, trangthai)
+VALUES
+    ('HD001', 'KH001', 'NV001', '2023-12-15', 1),
+    ('HD002', 'KH002', 'NV002', '2023-11-28', 0),
+    ('HD003', 'KH003', 'NV003', '2023-10-10', 1),
+    ('HD004', 'KH004', 'NV004', '2023-09-05', 0),
+    ('HD005', 'KH005', 'NV005', '2023-08-20', 1),
+    ('HD006', 'KH001', 'NV006', '2023-07-12', 0),
+    ('HD007', 'KH002', 'NV007', '2023-06-18', 1),
+    ('HD008', 'KH003', 'NV008', '2023-05-22', 0),
+    ('HD009', 'KH004', 'NV001', '2023-04-07', 1),
+    ('HD010', 'KH005', 'NV002', '2023-03-16', 0),
+    ('HD011', 'KH001', 'NV003', '2023-02-11', 1),
+    ('HD012', 'KH002', 'NV004', '2023-01-29', 0),
+    ('HD013', 'KH003', 'NV005', '2022-12-03', 1),
+    ('HD014', 'KH004', 'NV006', '2022-11-17', 0),
+    ('HD015', 'KH005', 'NV007', '2022-10-25', 1),
+    ('HD016', 'KH001', 'NV008', '2022-09-12', 0),
+    ('HD017', 'KH002', 'NV001', '2022-08-08', 1),
+    ('HD018', 'KH003', 'NV002', '2022-07-05', 0),
+    ('HD019', 'KH004', 'NV003', '2022-06-02', 1),
+    ('HD020', 'KH005', 'NV004', '2022-05-19', 0),
+    ('HD021', 'KH001', 'NV005', '2022-04-16', 1),
+    ('HD022', 'KH002', 'NV006', '2022-03-13', 0),
+    ('HD023', 'KH003', 'NV007', '2022-02-09', 1),
+    ('HD024', 'KH004', 'NV008', '2022-01-06', 0),
+    ('HD025', 'KH005', 'NV001', '2021-12-03', 1),
+    ('HD026', 'KH001', 'NV002', '2021-11-01', 0),
+    ('HD027', 'KH002', 'NV003', '2021-10-30', 1),
+    ('HD028', 'KH003', 'NV004', '2021-09-26', 0),
+    ('HD029', 'KH004', 'NV005', '2021-08-23', 1),
+    ('HD030', 'KH005', 'NV006', '2021-07-20', 0),
+    ('HD031', 'KH001', 'NV007', '2021-06-17', 1),
+    ('HD032', 'KH002', 'NV008', '2021-05-14', 0),
+    ('HD033', 'KH003', 'NV001', '2021-04-11', 1),
+    ('HD034', 'KH004', 'NV002', '2021-03-08', 0),
+    ('HD035', 'KH005', 'NV003', '2021-02-05', 1),
+    ('HD036', 'KH001', 'NV004', '2021-01-02', 0),
+    ('HD037', 'KH002', 'NV005', '2020-12-30', 1),
+    ('HD038', 'KH003', 'NV006', '2020-11-26', 0)
+
+----Bảng Đơn Hàng---
+CREATE TABLE DonHang(
+mahd VARCHAR(20) FOREIGN KEY REFERENCES dbo.HoaDon(mahd),
+masp VARCHAR(10) FOREIGN KEY REFERENCES dbo.SanPham(masp),
+sl int
+
+)
+INSERT INTO DonHang (mahd, masp, sl) VALUES
+('HD001', 'SS1', 2),
+('HD001', 'SS2', 1),
+('HD002', 'SS3', 3),
+('HD002', 'SS4', 2),
+('HD003', 'SS5', 1),
+('HD003', 'SS6', 2),
+('HD004', 'SS7', 1),
+('HD004', 'SS8', 3),
+('HD005', 'SS9', 2),
+('HD005', 'SS10', 1),
+('HD006', 'IP1', 1),
+('HD006', 'IP2', 2),
+('HD007', 'IP3', 3),
+('HD007', 'IP4', 1),
+('HD008', 'IP5', 2),
+('HD008', 'IP6', 1),
+('HD009', 'IP7', 3),
+('HD009', 'IP8', 2),
+('HD010', 'IP9', 1),
+('HD010', 'IP10', 2),
+('HD011', 'XM1', 1),
+('HD011', 'XM2', 2),
+('HD012', 'XM3', 3),
+('HD012', 'XM4', 1),
+('HD013', 'XM5', 2),
+('HD013', 'XM6', 1),
+('HD014', 'XM7', 3),
+('HD014', 'XM8', 2),
+('HD015', 'XM9', 1),
+('HD015', 'XM10', 2),
+('HD016', 'OP1', 1),
+('HD016', 'OP2', 2),
+('HD017', 'OP3', 3),
+('HD017', 'OP4', 1),
+('HD018', 'OP5', 2),
+('HD018', 'OP6', 1),
+('HD019', 'OP7', 3),
+('HD019', 'OP8', 2),
+('HD020', 'OP9', 1),
+('HD020', 'OP10', 2),
+('HD021', 'DL1', 1),
+('HD021', 'DL2', 2),
+('HD022', 'DL3', 3),
+('HD022', 'DL4', 1),
+('HD023', 'DL5', 2),
+('HD023', 'DL6', 1),
+('HD024', 'DL7', 3),
+('HD024', 'DL8', 2),
+('HD025', 'DL9', 1),
+('HD025', 'DL10', 2),
+('HD026', 'AC1', 1),
+('HD026', 'AC2', 2),
+('HD027', 'AC3', 3),
+('HD027', 'AC4', 1),
+('HD028', 'AC5', 2),
+('HD028', 'AC6', 1),
+('HD029', 'AC7', 3),
+('HD029', 'AC8', 2),
+('HD030', 'AC9', 1),
+('HD030', 'AC10', 2),
+('HD031', 'LE1', 1),
+('HD031', 'LE2', 2),
+('HD032', 'LE3', 3),
+('HD032', 'LE4', 1),
+('HD033', 'LE5', 2),
+('HD033', 'LE6', 1),
+('HD034', 'LE7', 3),
+('HD034', 'LE8', 2),
+('HD035', 'LE9', 1),
+('HD035', 'LE10', 2),
+('HD036', 'SS1', 2),
+('HD036', 'SS2', 1),
+('HD037', 'SS3', 3),
+('HD037', 'SS4', 2),
+('HD038', 'SS5', 1),
+('HD038', 'SS6', 2);
+

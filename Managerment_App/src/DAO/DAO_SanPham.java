@@ -26,8 +26,8 @@ public class DAO_SanPham {
               String math= rs.getString("math");
               String madm= rs.getString("madm");
               String makm= rs.getString("makm");
-              String anh= rs.getString("anh");
-              SanPham sp = new SanPham(masp, tensp, thongso, gianiemyet,giaban, math, madm, makm, anh);
+      
+              SanPham sp = new SanPham(masp, tensp, thongso, gianiemyet,giaban, math, madm, makm);
               listSP.add(sp);
             }
         } catch (Exception e) {
@@ -65,8 +65,8 @@ public class DAO_SanPham {
               String math= rs.getString("math");
               String madm= rs.getString("madm");
               String makm= rs.getString("makm");
-              String anh= rs.getString("anh");
-              result = new SanPham(masp, tensp, thongso, gianiemyet,giaban, math, madm, makm, anh);
+        
+              result = new SanPham(masp, tensp, thongso, gianiemyet,giaban, math, madm, makm);
                 
             }
         }catch (Exception e)
@@ -91,8 +91,8 @@ public class DAO_SanPham {
               String math= rs.getString("math");
               String madm= rs.getString("madm");
               String makm= rs.getString("makm");
-              String anh= rs.getString("anh");
-              SanPham sp = new SanPham(masp, tensp, thongso, gianiemyet,giaban, math, madm, makm, anh);
+    
+              SanPham sp = new SanPham(masp, tensp, thongso, gianiemyet,giaban, math, madm, makm);
               listSP.add(sp);
             }
         } catch (Exception e) {
@@ -116,8 +116,8 @@ public class DAO_SanPham {
               String math= rs.getString("math");
               String madm= rs.getString("madm");
               String makm= rs.getString("makm");
-              String anh= rs.getString("anh");
-              SanPham sp = new SanPham(masp, tensp, thongso, gianiemyet,giaban, math, madm, makm, anh);
+       
+              SanPham sp = new SanPham(masp, tensp, thongso, gianiemyet,giaban, math, madm, makm);
               listSP.add(sp);
             }
         } catch (Exception e) {
