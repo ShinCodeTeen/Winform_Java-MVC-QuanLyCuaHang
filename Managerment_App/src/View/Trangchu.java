@@ -1906,24 +1906,24 @@ private void onPanel(String panel){
                         
                     }
                     else{
-                         String masp = txb_QLSP_masp.getText();
+                    String masp = txb_QLSP_masp.getText();
                     String tensp = txb_QLSP_tensp.getText();
                     String thongso = txb_QLSP_thongso.getText();
                     int gianiemyet =Integer.parseInt( txb_QLSP_gianiemyet.getText());
-                int giaban = Integer.parseInt(txb_QLSP_giaban.getText());
+                    int giaban = Integer.parseInt(txb_QLSP_giaban.getText());
                     String madm = new DAO.DAO_DM_SanPham().getMadm(cbb_QLSP_dm.getSelectedItem().toString());
-                String math = new DAO.DAO_DM_ThuongHieu().getMath(cbb_QLSP_th.getSelectedItem().toString());
-                boolean re_them = new DAO.DAO_SanPham().InsertSanPham(masp,tensp, math, madm, thongso, gianiemyet, giaban);
-                if(re_them){
-                   int option = JOptionPane.showOptionDialog(null, "Thêm sản phẩm thành công !! Tiếp tục thêm ?", "Thông báo", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
-                   if(option==JOptionPane.OK_OPTION){
-                    clear_txb_QLSP();
+                    String math = new DAO.DAO_DM_ThuongHieu().getMath(cbb_QLSP_th.getSelectedItem().toString());
+                    boolean re_sua = new DAO.DAO_SanPham().UpdateSanPham(masp,tensp, math, madm, thongso, gianiemyet, giaban);
+                    if(re_sua){
+                    int option = JOptionPane.showOptionDialog(null, "Sửa sản phẩm thành công !! Tiếp tục sửa ?", "Thông báo", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                    if(option==JOptionPane.OK_OPTION){
+                    
                    }
                    else{
                    clear_txb_QLSP();
-                   tt_them_SP = false;
+                   tt_Sua_SP = false;
                    QLSP_off_txb();
-                   bt_Them_SP.setText("Mới");
+                   bt_Them_SP.setText("Sửa");
                    }
                 }
                     }

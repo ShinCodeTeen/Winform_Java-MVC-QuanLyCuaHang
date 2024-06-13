@@ -145,8 +145,8 @@ public class DAO_SanPham {
     }
    }
    
-   public boolean UpdateSanPham(String tensp, String math, String madm, String thongso, int  gianiemyet,int giaban){
-       String sql ="UPDATE dbo.SanPham SET tensp = '"+tensp+"' , thongso = N'"+thongso+"', gianiemyet ="+gianiemyet+" , giaban ="+giaban+" , math = '"+math+"', madm= '"+madm+"'";
+   public boolean UpdateSanPham(String masp,String tensp, String math, String madm, String thongso, int  gianiemyet,int giaban){
+       String sql ="UPDATE dbo.SanPham SET tensp = '"+tensp+"' , thongso = N'"+thongso+"', gianiemyet ="+gianiemyet+" , giaban ="+giaban+" , math = '"+math+"', madm= '"+madm+"' where masp ='"+masp+"'";
      try {
         int rs = DataProvider.executeUpdate(sql);
         if(rs>0){
@@ -163,6 +163,24 @@ public class DAO_SanPham {
       return false;
     }  
    
+   }
+   public boolean DeleteSanPham(String masp){
+       String sql ="DELETE dbo.SanPham  where masp ='"+masp+"'";
+     try {
+        int rs = DataProvider.executeUpdate(sql);
+        if(rs>0){
+        return true;
+        }
+        else{
+        return false;
+        }
+    
+            
+    }catch(Exception e){
+        
+      e.printStackTrace();
+      return false;
+    }  
    }
        
 }
