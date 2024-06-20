@@ -1262,6 +1262,11 @@ private void onPanel(String panel){
         bt_Xoa_SP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/xoa.png"))); // NOI18N
         bt_Xoa_SP.setText("Xóa");
         bt_Xoa_SP.setToolTipText("");
+        bt_Xoa_SP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_Xoa_SPMouseClicked(evt);
+            }
+        });
 
         bt_QLSP_TK.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bt_QLSP_TK.setText("Tìm Kiếm");
@@ -1936,6 +1941,25 @@ private void onPanel(String panel){
     private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField17ActionPerformed
+
+    private void bt_Xoa_SPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_Xoa_SPMouseClicked
+        int selectedRow = tb_SanPham.getSelectedRow();
+        if(selectedRow==-1){
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn sản phẩm trước !", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        else{
+            String masp= txb_QLSP_masp.getText();
+            String tensp = txb_QLSP_tensp.getText();
+            int option = JOptionPane.showOptionDialog(null, "Xác nhận xóa sản phẩm : "+tensp, "Thông báo", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if(option==JOptionPane.OK_OPTION){
+            boolean rs = new DAO.DAO_SanPham().DeleteSanPham(masp);
+            if(rs){
+                JOptionPane.showMessageDialog(this, "Xóa sản phẩm thành công !", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        }
+    }//GEN-LAST:event_bt_Xoa_SPMouseClicked
     
     /**
      * @param args the command line arguments
