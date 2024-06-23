@@ -36,12 +36,12 @@ public class DAO_KhachHang {
         try {
             ResultSet rs = DataProvider.executeQuery(sql);
             while(rs.next()){
-              String makh = rs.getString("masp");
-              String tenkh= rs.getString("tensp");
-              String sdt= rs.getString("thongso");
+              String makh = rs.getString("makh");
+              String tenkh= rs.getString("tenkh");
+              String sdt= rs.getString("sdt");
            
-              String diachi= rs.getString("math");
-              int type = rs.getInt("type");
+              String diachi= rs.getString("diachi");
+              int type = rs.getInt("loai");
             
               KhachHang kh = new KhachHang(makh, tenkh, sdt, diachi, type);
               listKH.add(kh);
@@ -51,4 +51,121 @@ public class DAO_KhachHang {
         return listKH;
     
     }
+    
+    public KhachHang getKH(String makhtk){
+        KhachHang kh = null;
+     String sql = "Select * From KhachHang where makh ='"+makhtk+"'";
+        try {
+            ResultSet rs = DataProvider.executeQuery(sql);
+            while(rs.next()){
+              String makh = rs.getString("makh");
+              String tenkh= rs.getString("tenkh");
+              String sdt= rs.getString("sdt");
+           
+              String diachi= rs.getString("diachi");
+              int type = rs.getInt("loai");
+            
+             kh = new KhachHang(makh, tenkh, sdt, diachi, type);
+              
+            }
+        } catch (Exception e) {
+        }
+        return kh;
+    }
+    
+    public int sodonhuy(String makh){
+        int sodonhuy=0;
+        String sql = "Select COUNT(mahd) as donhuy FROM HoaDon hd JOIN KhachHang kh on hd.makh = kh.makh AND hd.trangthai = -1 And hd.makh = '"+makh+"'";
+        try {
+            ResultSet rs = DataProvider.executeQuery(sql);
+            while(rs.next()){
+                sodonhuy = rs.getInt("donhuy");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sodonhuy;
+    }
+    public int sodonchuatt(String makh){
+        int sodonchuatt=0;
+        String sql = "Select COUNT(mahd) as donchuatt FROM HoaDon hd JOIN KhachHang kh on hd.makh = kh.makh AND hd.trangthai = 0 And hd.makh = '"+makh+"'";
+        try {
+            ResultSet rs = DataProvider.executeQuery(sql);
+            while(rs.next()){
+                sodonchuatt = rs.getInt("donchuatt");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sodonchuatt;
+    }
+     public int sodonmua(String makh){
+        int sodonmua=0;
+        String sql = "Select COUNT(mahd) as donchuatt FROM HoaDon hd JOIN KhachHang kh on hd.makh = kh.makh AND hd.trangthai = 1 And hd.makh = '"+makh+"'";
+        try {
+            ResultSet rs = DataProvider.executeQuery(sql);
+            while(rs.next()){
+                sodonmua = rs.getInt("donchuatt");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return sodonmua;
+    }
+     public boolean insertKH(String makh,String tenkh,String diachi,String sdt){
+        String sql = "insert into KhachHang (makh,tenkh,diachi,sdt,loai) Value ('"+makh+"',N'"+tenkh+"',N'"+diachi+"','"+sdt+"',0)";
+        try {
+            int rs = DataProvider.executeUpdate(sql);
+            if(rs>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    
+            
+        }catch(Exception e){
+        
+            e.printStackTrace();
+            return false;
+        }
+     }
+       public boolean UpdateKhachHang(String makh,String tenkh, String diachi, String sdt){
+       String sql ="UPDATE dbo.KhachHang SET tenkh = N'"+tenkh+"' , diachi = N'"+diachi+"', sdt= '"+sdt+"' where makh ='"+makh+"'";
+        try {
+        int rs = DataProvider.executeUpdate(sql);
+        if(rs>0){
+        return true;
+        }
+        else{
+        return false;
+        }
+    
+            
+    }catch(Exception e){
+        
+      e.printStackTrace();
+      return false;
+    }  
+   
+   }
+       public boolean DeleteKhachHang(String makh){
+       String sql ="DELETE dbo.KhachHang  where makh ='"+makh+"'";
+     try {
+        int rs = DataProvider.executeUpdate(sql);
+        if(rs>0){
+        return true;
+        }
+        else{
+        return false;
+        }
+    
+            
+    }catch(Exception e){
+        
+      e.printStackTrace();
+      return false;
+    }  
+   }
+     
 }
