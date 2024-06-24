@@ -178,6 +178,7 @@ private void setPanel(){
     txb_QLKH_loai.setText("");
     txb_QLKH_sodonmua.setText("");
     txb_QLKH_sodonhuy.setText("");
+    txb_QLKH_sodonchuatt.setText("");
     }
 private void onPanel(String panel){
     switch (panel) {
@@ -1081,6 +1082,11 @@ private void onPanel(String panel){
         bt_Xoa_KH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/img/xoa.png"))); // NOI18N
         bt_Xoa_KH.setText("Xóa");
         bt_Xoa_KH.setToolTipText("");
+        bt_Xoa_KH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_Xoa_KHMouseClicked(evt);
+            }
+        });
 
         txb_QLKH_diachi.setEnabled(false);
         txb_QLKH_diachi.addActionListener(new java.awt.event.ActionListener() {
@@ -1091,6 +1097,11 @@ private void onPanel(String panel){
 
         bt_TimKiemKH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bt_TimKiemKH.setText("Tìm Kiếm");
+        bt_TimKiemKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_TimKiemKHMouseClicked(evt);
+            }
+        });
 
         jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel39.setText("Số đơn chưa thanh toán :");
@@ -1820,6 +1831,7 @@ private void onPanel(String panel){
                    int option = JOptionPane.showOptionDialog(null, "Thêm sản phẩm thành công !! Tiếp tục thêm ?", "Thông báo", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                    if(option==JOptionPane.OK_OPTION){
                     clear_txb_QLSP();
+                    resetTableSP();
                    }
                    else{
                    clear_txb_QLSP();
@@ -2063,7 +2075,7 @@ private void onPanel(String panel){
             }
         }
         else{
-            if(tt_them_SP==false){
+            if(tt_them_KH==false){
                     clear_txb_QLKH();
                     QLKH_on_txb();
                     bt_Them_KH.setText("Xác nhận");
@@ -2071,29 +2083,26 @@ private void onPanel(String panel){
         
                     }
             else{
-                if(txb_QLKH_makh.getText().isEmpty() && txb_QLSP_gianiemyet.getText().isEmpty() && txb_QLSP_masp.getText().isEmpty() && txb_QLSP_tensp.getText().isEmpty() && txb_QLSP_thongso.getText().isEmpty())
+                if(txb_QLKH_makh.getText().isEmpty() && txb_QLKH_tenkh.getText().isEmpty() && txb_QLKH_diachi.getText().isEmpty() && txb_QLKH_sdt.getText().isEmpty())
                 {
-                JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin sản phẩm !", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin khách hàng !", "Thông báo", JOptionPane.ERROR_MESSAGE);
                 }
                 else{
-                String masp = txb_QLSP_masp.getText();
-                String tensp = txb_QLSP_tensp.getText();
-                String thongso = txb_QLSP_thongso.getText();
-                int gianiemyet =Integer.parseInt( txb_QLSP_gianiemyet.getText());
-                int giaban = Integer.parseInt(txb_QLSP_giaban.getText());
-                String madm = new DAO.DAO_DM_SanPham().getMadm(cbb_QLSP_dm.getSelectedItem().toString());
-                String math = new DAO.DAO_DM_ThuongHieu().getMath(cbb_QLSP_th.getSelectedItem().toString());
-                boolean re_them = new DAO.DAO_SanPham().InsertSanPham(masp,tensp, math, madm, thongso, gianiemyet, giaban);
+                String makh = txb_QLKH_makh.getText();
+                String tenkh = txb_QLKH_tenkh.getText();
+                String diachi = txb_QLKH_diachi.getText();
+                String sdt = txb_QLKH_sdt.getText();
+                boolean re_them = new DAO.DAO_KhachHang().insertKH(makh, tenkh, diachi, sdt);
                 if(re_them){
-                   int option = JOptionPane.showOptionDialog(null, "Thêm sản phẩm thành công !! Tiếp tục thêm ?", "Thông báo", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                   int option = JOptionPane.showOptionDialog(null, "Thêm khách hàng thành công !! Tiếp tục thêm ?", "Thông báo", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                    if(option==JOptionPane.OK_OPTION){
-                    clear_txb_QLSP();
+                    clear_txb_QLKH();
                    }
                    else{
-                   clear_txb_QLSP();
-                   tt_them_SP = false;
-                   QLSP_off_txb();
-                   bt_Them_SP.setText("Mới");
+                   clear_txb_QLKH();
+                   tt_them_KH = false;
+                   QLKH_off_txb();
+                   bt_Them_KH.setText("Mới");
                    }
                 }
                 }
@@ -2232,6 +2241,57 @@ private void onPanel(String panel){
     private void txb_QLKH_sodonmuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txb_QLKH_sodonmuaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txb_QLKH_sodonmuaActionPerformed
+
+    private void bt_Xoa_KHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_Xoa_KHMouseClicked
+        int selectedRow = tb_QLKhachHang.getSelectedRow();
+        if(selectedRow==-1){
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn khách hàng trước !", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        else{
+            String makh= txb_QLKH_makh.getText();
+            String tenkh = txb_QLKH_tenkh.getText();
+            int option = JOptionPane.showOptionDialog(null, "Xác nhận xóa khách hàng : "+tenkh, "Thông báo", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if(option==JOptionPane.OK_OPTION){
+            boolean rs = new DAO.DAO_KhachHang().DeleteKhachHang(makh);
+            if(rs){
+                JOptionPane.showMessageDialog(this, "Xóa sản phẩm thành công !", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        }
+    }//GEN-LAST:event_bt_Xoa_KHMouseClicked
+
+    private void bt_TimKiemKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_TimKiemKHMouseClicked
+       DefaultTableModel model = (DefaultTableModel)tb_QLKhachHang.getModel();
+       model.setRowCount(0); // Xóa tất cả dữ liệu
+
+        String khtk = txb_QLKH_tkkh.getText();
+       
+        ArrayList<KhachHang> listkh = new DAO.DAO_KhachHang().getKHTK(khtk);
+        if(listkh.size()==0){
+                        JOptionPane.showMessageDialog(this, "Không tìm thấy thông tin khách hàng !", "Thông báo", JOptionPane.ERROR_MESSAGE);
+
+    }
+    else{
+        String pl;
+        for (KhachHang kh : listkh) 
+        {
+            int type  = kh.getType();
+            if(type==0){
+                    pl = "Thường";
+    
+                }
+            else if (type == 1){
+                pl = "Thân Thiết";
+            }
+            else{
+            pl = "Danh sách đen";
+        }
+        Object[] row = {kh.getMakh(),kh.getTenkh(),kh.getDiachi(),kh.getSdt(),pl};
+        model.addRow(row);
+            }
+        }
+    }//GEN-LAST:event_bt_TimKiemKHMouseClicked
     
     /**
      * @param args the command line arguments

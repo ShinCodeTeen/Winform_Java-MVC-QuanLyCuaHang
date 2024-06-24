@@ -113,7 +113,7 @@ public class DAO_KhachHang {
         return sodonmua;
     }
      public boolean insertKH(String makh,String tenkh,String diachi,String sdt){
-        String sql = "insert into KhachHang (makh,tenkh,diachi,sdt,loai) Value ('"+makh+"',N'"+tenkh+"',N'"+diachi+"','"+sdt+"',0)";
+        String sql = "insert into KhachHang (makh,tenkh,diachi,sdt,loai) Values ('"+makh+"',N'"+tenkh+"',N'"+diachi+"','"+sdt+"',0)";
         try {
             int rs = DataProvider.executeUpdate(sql);
             if(rs>0){
@@ -167,5 +167,25 @@ public class DAO_KhachHang {
       return false;
     }  
    }
-     
+   public ArrayList<KhachHang> getKHTK (String khtk){
+      ArrayList<KhachHang> listKH = new ArrayList<>();
+        String sql = "Select * From KhachHang Where tenkh like N'%"+khtk+"%' or sdt like '%"+khtk+"%' ";
+        try {
+            ResultSet rs = DataProvider.executeQuery(sql);
+            while(rs.next()){
+              String makh = rs.getString("makh");
+              String tenkh= rs.getString("tenkh");
+              String sdt= rs.getString("sdt");
+           
+              String diachi= rs.getString("diachi");
+              int type = rs.getInt("loai");
+            
+              KhachHang kh = new KhachHang(makh, tenkh, sdt, diachi, type);
+              listKH.add(kh);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listKH;
+   }
 }
