@@ -182,5 +182,18 @@ public class DAO_SanPham {
       return false;
     }  
    }
+   public int sl_spban(){
+       int sl = 0;
+       String sql= "SELECT Sum(sl) as sl FROM DonHang dh JOin HoaDon hd ON hd.mahd = dh.mahd and hd.trangthai=1";
+       try {
+             ResultSet rs = DataProvider.executeQuery(sql);
+             while (rs.next()){
+                  sl = rs.getInt("sl");
+             }
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+       return sl;
+   }
        
 }
