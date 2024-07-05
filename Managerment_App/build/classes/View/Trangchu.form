@@ -137,30 +137,6 @@
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_QL_KhachHangMouseExited"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="bt_QL_DanhMuc">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="b2" red="5a" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="16" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/View/img/product-range.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="   Qu&#x1ea3;n L&#xfd; Danh M&#x1ee5;c"/>
-                <Property name="opaque" type="boolean" value="true"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="bt_QL_DanhMucMouseMoved"/>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_QL_DanhMucMouseClicked"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_QL_DanhMucMouseExited"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="bt_QL_SanPham">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -491,84 +467,6 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="&#x110;&#x1ed5;i M&#x1ead;t Kh&#x1ea9;u"/>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="QL_DanhMuc">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="tab4">
-                <Property name="tabTitle" type="java.lang.String" value="tab4"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel10" alignment="0" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="771" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel10">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="b2" red="5a" type="rgb"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-              </Properties>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel11" pref="1224" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel11" pref="47" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel11">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="66" red="99" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="18" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Danh M&#x1ee5;c"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1964,21 +1862,17 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel44" min="-2" pref="110" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txb_QLNV_sodonban" min="-2" pref="203" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                                              <Component id="jLabel45" min="-2" pref="110" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txb_QLSP_giaban1" min="-2" pref="200" max="-2" attributes="0"/>
+                                              <Component id="txb_QLNV_ngayvao" min="-2" pref="203" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="bt_Them_NV" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
                                               <Component id="bt_Sua_NV" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
                                               <Component id="bt_Xoa_NV" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                           </Group>
@@ -2005,7 +1899,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel46" min="-2" pref="110" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="cbb_QLSP_dm1" min="-2" pref="160" max="-2" attributes="0"/>
+                                              <Component id="cbb_QLNV_cv" min="-2" pref="160" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
                                               <Component id="jLabel43" min="-2" pref="110" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -2037,7 +1931,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="jLabel46" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="cbb_QLSP_dm1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="cbb_QLNV_cv" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
@@ -2059,10 +1953,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txb_QLSP_giaban1" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="txb_QLNV_sodonban" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="txb_QLNV_ngayvao" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="jLabel44" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="jLabel45" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -2070,7 +1962,7 @@
                           <Component id="bt_Sua_NV" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="bt_Xoa_NV" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel41" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -2159,7 +2051,6 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tb_NhanvienMouseClicked"/>
-                    <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="tb_NhanvienInputMethodTextChanged"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -2211,15 +2102,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="S&#x1ed1; &#x111;&#x1a1;n &#x111;&#xe3; b&#xe1;n : "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel45">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Gi&#xe1; b&#xe1;n :"/>
+                <Property name="text" type="java.lang.String" value="Ng&#xe0;y v&#xe0;o l&#xe0;m :"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel46">
@@ -2248,17 +2131,12 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txb_QLSP_giaban1">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="txb_QLNV_tennv">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txb_QLNV_sodonban">
+            <Component class="javax.swing.JTextField" name="txb_QLNV_ngayvao">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
@@ -2338,7 +2216,7 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bt_tknvMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbb_QLSP_dm1">
+            <Component class="javax.swing.JComboBox" name="cbb_QLNV_cv">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
