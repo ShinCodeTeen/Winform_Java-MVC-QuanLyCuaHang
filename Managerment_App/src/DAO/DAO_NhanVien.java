@@ -70,6 +70,20 @@ public class DAO_NhanVien {
         }
         return chucvu;
     }
+      public String getMaChucvu(String cv){
+        String macv = "";
+        String sql = "Select machucvu  From ChucVu Where tencv = N'"+cv+"'";
+        try {
+            ResultSet rs = DataProvider.executeQuery(sql);
+            while(rs.next()){
+               macv= rs.getString("machucvu");
+               
+            }
+        }catch (Exception e) {
+             e.printStackTrace();
+        }
+        return macv;
+    }
        public NhanVien getnv(String tennv1){
    String sql = "Select * From NhanVien Where tennv =N'"+tennv1+"'";
    NhanVien result = null;
@@ -117,7 +131,7 @@ public class DAO_NhanVien {
         return listNV;
    }
       public boolean insertNV(String manv,String tennv,String diachi,String sdt,String macv){
-        String sql = "insert into NhanVien (manv,tennv,macv,diachi,sdt,ngayvaolam) Values ('"+manv+"',N'"+tennv+"',N'"+macv+"',N'"+diachi+"','"+sdt+"',GetDate())";
+        String sql = "insert into NhanVien (manv,tennv,macv,diachi,sdt,ngayvaolam) Values ('"+manv+"',N'"+tennv+"','"+macv+"',N'"+diachi+"','"+sdt+"',GetDate())";
         try {
             int rs = DataProvider.executeUpdate(sql);
             if(rs>0){
@@ -134,8 +148,8 @@ public class DAO_NhanVien {
             return false;
         }
      }
-       public boolean UpdateNhanVien(String manv, String diachi, String sdt,String macv){
-       String sql ="UPDATE dbo.NhanVien SET macv = N'"+macv+"' , diachi = N'"+diachi+"', sdt= '"+sdt+"' where manv ='"+manv+"'";
+       public boolean UpdateNhanVien(String manv,String tennv, String diachi, String sdt,String macv){
+       String sql ="UPDATE dbo.NhanVien SET tennv = N'"+tennv+"' ,macv = '"+macv+"' , diachi = N'"+diachi+"', sdt= '"+sdt+"' where manv ='"+manv+"'";
         try {
         int rs = DataProvider.executeUpdate(sql);
         if(rs>0){
@@ -153,8 +167,8 @@ public class DAO_NhanVien {
     }  
    
    }
-       public boolean DeleteKhachHang(String makh){
-       String sql ="DELETE dbo.KhachHang  where makh ='"+makh+"'";
+       public boolean DeleteNhanvien(String manv){
+       String sql ="DELETE dbo.NhanVien  where manv ='"+manv+"'";
      try {
         int rs = DataProvider.executeUpdate(sql);
         if(rs>0){
@@ -171,4 +185,19 @@ public class DAO_NhanVien {
       return false;
     }  
    }
+       
+    public String getTenNV(String manv){
+        String tennv = "";
+        String sql = "Select tennv  From NhanVien Where manv = '"+manv+"'";
+        try {
+            ResultSet rs = DataProvider.executeQuery(sql);
+            while(rs.next()){
+               tennv= rs.getString("tennv");
+               
+            }
+        }catch (Exception e) {
+             e.printStackTrace();
+        }
+        return tennv;
+    }
 }

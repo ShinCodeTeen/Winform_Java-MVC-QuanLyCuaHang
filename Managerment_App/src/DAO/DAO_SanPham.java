@@ -52,7 +52,7 @@ public class DAO_SanPham {
         return Sl_SanPham;
     }
    public SanPham getsp(String tensp1){
-   String sql = "Select * From SanPham Where tensp ='"+tensp1+"'";
+   String sql = "Select * From SanPham Where tensp ='"+tensp1+"' OR masp ='"+tensp1+"'";
    SanPham result = null;
         try {
             ResultSet rs = DataProvider.executeQuery(sql);
@@ -195,5 +195,18 @@ public class DAO_SanPham {
        }
        return sl;
    }
-       
+      public String get_Tensp(String masp){
+       String ten = "";
+       String sql= "SELECT tensp From SanPham where masp ='"+masp+"'";
+       try {
+             ResultSet rs = DataProvider.executeQuery(sql);
+             while (rs.next()){
+                  ten = rs.getString("tensp");
+             }
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+       return ten;
+   }
+      
 }

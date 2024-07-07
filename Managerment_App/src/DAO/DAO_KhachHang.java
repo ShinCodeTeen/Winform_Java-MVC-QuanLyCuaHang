@@ -188,4 +188,36 @@ public class DAO_KhachHang {
         }
         return listKH;
    }
+     public String getTenKH(String makh){
+        String ten = null;
+     String sql = "Select * From KhachHang where makh ='"+makh+"'";
+        try {
+            ResultSet rs = DataProvider.executeQuery(sql);
+            while(rs.next()){
+              
+              ten= rs.getString("tenkh");
+              
+    
+              
+            }
+        } catch (Exception e) {
+        }
+        return ten;
+    }
+     public String getMaKH(String tenkh){
+        String ma = null;
+     String sql = "Select makh From KhachHang where tenkh =N'"+tenkh+"'";
+        try {
+            ResultSet rs = DataProvider.executeQuery(sql);
+            while(rs.next()){
+              
+              ma= rs.getString("makh");
+              
+    
+              
+            }
+        } catch (Exception e) {
+        }
+        return ma;
+    }
 }

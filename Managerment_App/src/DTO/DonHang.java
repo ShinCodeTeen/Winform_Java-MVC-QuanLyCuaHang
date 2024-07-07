@@ -12,7 +12,7 @@ public class DonHang {
     public String mahd;
     public String masp;
     public int sl;
-
+    public int thanhtien;
     public String getMahd() {
         return mahd;
     }
@@ -41,5 +41,11 @@ public class DonHang {
         this.mahd = mahd;
         this.masp = masp;
         this.sl = sl;
+    }
+    public DonHang(String mahd, String masp, int sl,int thanhtien) {
+        this.mahd = mahd;
+        this.masp = masp;
+        this.sl = sl;
+        this.thanhtien = thanhtien;
     }
 }
